@@ -98,6 +98,19 @@ ADS["ejemplo-historia"] = (1920, f"""<div style="position:relative;height:1920px
 <img src="file://{demo}" style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:60px"></div>
 <div class=pill style="background:#fff;color:#6B2338;margin-top:-60px;position:relative">Ver ejemplo · link en perfil</div></div>""")
 
+
+foto_boda = ROOT / "i/ejemplo-boda-yanin-ricardo/img/historia2.jpg"
+ADS["bodas-foto-post"] = (1350, f"""<div style="position:relative;height:1350px;background:#2B1F22">
+<img src="file://{foto_boda}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,10,.05) 30%,rgba(43,15,24,.94) 78%)"></div>
+<div style="position:absolute;left:80px;right:80px;bottom:90px;color:#fff;text-align:center">
+<div class=k style="color:#E7C6C3">Invitaciones de boda</div>
+<h1 style="font-size:104px;margin:22px 0 18px">Su historia de amor,<br><em style="color:#D9B77E">en una invitación</em></h1>
+<div style="font-size:32px;opacity:.92">Ceremonia y recepción con mapa, galería, mesa de regalos y confirmación por WhatsApp.</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:44px">
+<div class=logo style="width:230px">{logo_claro}</div>
+<div class=pill style="background:#fff;color:#6B2338">Cotiza la tuya</div></div></div></div>""")
+
 OG = f"""<div style="width:1200px;height:630px;background:#F6EFE4;display:flex;align-items:center;gap:60px;padding:0 80px;position:relative;overflow:hidden">
 <div class=arch style="right:-60px;top:-40px;width:480px;height:720px;opacity:.6"></div>
 <div style="flex:1"><div class=logo style="width:360px">{logo}</div>

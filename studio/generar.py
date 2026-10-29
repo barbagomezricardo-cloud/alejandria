@@ -183,7 +183,7 @@ def pdf_preinvitacion(out, foto, pos, c, ev, nombres, fecha_pdf, ciudad, url, se
     W, H = letter; cv = canvas.Canvas(str(out), pagesize=letter)
     cv.setTitle(f"Pre-invitación · {' & '.join(nombres)}")
     cv.setFillColor(HexColor(c["cream"])); cv.rect(0, 0, W, H, fill=1, stroke=0)
-    PH = H * .52
+    PH = H * (.46 if len(nombres) == 2 else .52)
     im = Image.open(foto).convert("RGB"); iw, ih = im.size; tr = W / PH
     m = re.match(r"(\d+)%\s+(\d+)%", pos or ""); px, py = (int(m.group(1)) / 100, int(m.group(2)) / 100) if m else (.5, .25)
     if iw / ih > tr:
@@ -237,21 +237,21 @@ def png_estado(out, foto_rel_dir, foto, pos, c, ev, nombres, fecha_corta, ciudad
         from playwright.sync_api import sync_playwright
     except Exception:
         return False
-    nom = (f"{nombres[0]}<span>&amp;</span>{nombres[1]}" if len(nombres) == 2 else nombres[0])
+    nom = (f"{nombres[0]}<br><span>&amp;</span> {nombres[1]}" if len(nombres) == 2 else nombres[0])
     html = f"""<!doctype html><meta charset=utf8><style>
     @font-face{{font-family:P;src:url('file://{STUDIO}/fonts/Playfair-SemiBoldItalic.ttf')}}
     @font-face{{font-family:L;src:url('file://{STUDIO}/fonts/Lato-Bold.ttf')}}
     @font-face{{font-family:C;src:url('file://{STUDIO}/fonts/Cormorant-Italic.ttf')}}
     *{{margin:0;box-sizing:border-box}} body{{width:1080px;height:1920px;position:relative;overflow:hidden;background:{c['dark']};font-family:L}}
     img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{pos}}}
-    .g{{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.05) 45%,rgba(10,7,4,.88) 100%)}}
-    .t{{position:absolute;left:60px;right:60px;bottom:170px;text-align:center;color:#fff}}
-    .e{{font-size:30px;letter-spacing:12px;color:{c['accent_s']};margin-bottom:26px}}
-    h1{{font-family:P;font-weight:600;font-size:{150 if len(nombres)==1 else 112}px;line-height:1.02;text-shadow:0 6px 40px rgba(0,0,0,.5)}}
-    h1 span{{font-family:C;font-size:.5em;color:{c['accent_s']};margin:0 .2em;vertical-align:middle}}
+    .g{{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.05) 52%,rgba(10,7,4,.9) 82%)}}
+    .t{{position:absolute;left:60px;right:60px;bottom:110px;text-align:center;color:#fff}}
+    .e{{font-size:28px;letter-spacing:12px;color:{c['accent_s']};margin-bottom:20px}}
+    h1{{font-family:P;font-weight:600;font-size:{150 if len(nombres)==1 else 100}px;line-height:1.02;text-shadow:0 6px 40px rgba(0,0,0,.5)}}
+    h1 span{{font-family:C;font-size:.6em;color:{c['accent_s']}}}
     .d{{margin-top:36px;font-size:34px;letter-spacing:7px;color:#fff}}
     .c{{margin-top:12px;font-family:C;font-size:42px;color:#f3ece2}}
-    .b{{display:inline-block;margin-top:56px;background:{c['accent']};padding:30px 62px;border-radius:60px;font-size:30px;letter-spacing:5px}}
+    .b{{display:inline-block;margin-top:40px;background:{c['accent']};padding:30px 62px;border-radius:60px;font-size:30px;letter-spacing:5px}}
     .u{{margin-top:22px;font-size:24px;letter-spacing:1px;opacity:.85}}
     </style><img src="file://{foto}"><div class=g></div><div class=t><div class=e>{ev['pdf_eyebrow']}</div><h1>{nom}</h1>
     <div class=d>{fecha_corta.upper()}</div><div class=c>{ciudad}</div><div class=b>VER INVITACIÓN</div><div class=u>{url.replace('https://','')}</div></div>"""
@@ -348,6 +348,7 @@ def generar(pedido_path):
         "familia_titulo": ev.get("familia_titulo"), "familia_intro": ev.get("familia_intro", "Quienes con su amor y dedicación hacen posible esta celebración."),
         "itinerario_frase": ev["itinerario_frase"], "lugar_intro": ev.get("lugar_intro", "El lugar donde viviremos juntos este día tan especial."),
         "galeria_titulo": ev["galeria_titulo"], "galeria_intro": ev.get("galeria_intro", "Cada imagen guarda un instante que ya forma parte de esta historia."),
+        "gracias": ev.get("gracias", "¡Gracias por celebrar con nosotros!"),
         "rsvp_texto": ev.get("rsvp_texto", "Tu presencia hará esta celebración aún más especial. Por favor confírmanos tu asistencia para organizar cada detalle con cariño."),
     }
     env = Environment(loader=FileSystemLoader(str(STUDIO)), autoescape=select_autoescape(["html"]))

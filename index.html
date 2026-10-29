@@ -99,7 +99,7 @@
   .demo .kicker{text-align:left}
   .feat{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin:24px 0 30px;font-size:15px}
   .feat div::before{content:"✦ ";color:var(--oro)}
-  @media(max-width:860px){.demo .grid{grid-template-columns:1fr}.demo h2,.demo .kicker{text-align:center}.demo .txt{text-align:center}.feat{text-align:left}}
+  @media(max-width:860px){.demo-ctas{justify-content:center}.demo .grid{grid-template-columns:1fr}.demo h2,.demo .kicker{text-align:center}.demo .txt{text-align:center}.feat{text-align:left}}
 
   .why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .why div{text-align:center;padding:10px}
@@ -251,7 +251,10 @@
         <div>Tu historia con fotos</div><div>Cuenta regresiva en vivo</div><div>Mapa a un toque</div>
         <div>Música de fondo</div><div>Galería elegante</div><div>Confirmación por WhatsApp</div>
       </div>
-      <a class="btn vino" href="i/ejemplo-xv-shantell/" target="_blank" rel="noopener">Abrir ejemplo de XV años</a>
+      <div style="display:flex;gap:12px;flex-wrap:wrap" class="demo-ctas">
+        <a class="btn vino" href="i/ejemplo-xv-shantell/" target="_blank" rel="noopener">Ejemplo de XV años</a>
+        <a class="btn line" href="i/ejemplo-boda-yanin-ricardo/" target="_blank" rel="noopener">Ejemplo de boda</a>
+      </div>
     </div>
   </div>
 </section>

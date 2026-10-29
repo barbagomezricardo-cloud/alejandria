@@ -1,0 +1,69 @@
+{
+  "slug": "ejemplo-boda-yanin-ricardo",
+  "paquete": "premium",
+  "evento": "boda",
+  "festejados": ["Yanin Alejandra", "Ricardo"],
+  "fecha": "2026-08-01T17:30",
+  "ciudad": "Jamay, Jalisco",
+  "colores": { "paleta": "barbie-oro" },
+  "fotos": {
+    "portada": "portada.jpg",
+    "cierre": "cierre.jpg",
+    "destacada": "destacada.jpg"
+  },
+  "textos": {
+    "historia_intro": "Una historia escrita despacio, con risas, complicidad y la certeza de haber encontrado, al fin, a la persona correcta.",
+    "familia_titulo": "Con la bendición de",
+    "lugar_intro": "Dos lugares que guardarán para siempre el recuerdo de este día: uno bendecirá nuestra unión y el otro será testigo de nuestra primera fiesta como esposos.",
+    "galeria_intro": "Cada imagen guarda un instante real: una mirada, una risa, un abrazo que ya forma parte de nuestra historia.",
+    "rsvp_texto": "Nos encantaría contar contigo en uno de los días más importantes de nuestras vidas. Por favor confírmanos tu asistencia para organizar cada detalle con cariño.",
+    "gracias": "¡Gracias por celebrar con nosotros!"
+  },
+  "historia": [
+    { "titulo": "El comienzo", "foto": "historia1.jpg",
+      "texto": "Nos conocimos sin planearlo, en medio de la rutina diaria, y desde la primera conversación supimos que algo distinto estaba naciendo. Lo que empezó como charlas casuales pronto se convirtió en risas compartidas y en la certeza tranquila de haber encontrado a nuestro mejor amigo." },
+    { "titulo": "Construyendo juntos", "foto": "historia2.jpg",
+      "texto": "Aprendimos a sostenernos en los días difíciles y a celebrar cada pequeño logro. Descubrimos que el amor verdadero no vive en los grandes gestos, sino en lo cotidiano: un café compartido, un viaje improvisado y un lugar seguro al cual volver." },
+    { "titulo": "El sí definitivo", "foto": "historia3.jpg",
+      "texto": "Hoy decidimos prometernos lo que ya vivíamos en silencio: que somos el uno para el otro, hoy y siempre. Queremos celebrar el inicio de esta nueva etapa con las personas que más amamos, y no podríamos imaginar este día sin ti." }
+  ],
+  "frase_destacada": "Remando juntos, como en la vida.",
+  "itinerario": [
+    { "hora": "5:30 PM", "actividad": "Ceremonia religiosa" },
+    { "hora": "8:00 PM", "actividad": "Cóctel de bienvenida" },
+    { "hora": "9:00 PM", "actividad": "Recepción y cena" },
+    { "hora": "10:00 PM", "actividad": "Baile de los novios" },
+    { "hora": "10:30 PM", "actividad": "Fiesta y baile" },
+    { "hora": "12:00 AM", "actividad": "Continúa la fiesta con nuevo grupo de banda" }
+  ],
+  "lugares": [
+    { "etiqueta": "Ceremonia religiosa", "nombre": "Parroquia de Nuestra Señora del Rosario",
+      "direccion": "Calle Antonio Curiel 80D, Centro, Jamay, Jalisco" },
+    { "etiqueta": "Recepción y fiesta", "nombre": "Salón de eventos El Olvido",
+      "direccion": "Carretera Jamay - La Barca 3, Jalisco" }
+  ],
+  "galeria": ["g1.jpg", "g2.jpg", "g3.jpg", "g4.jpg", "g5.jpg", "g6.jpg", "g7.jpg", "g8.jpg", "g9.jpg", "g10.jpg", "g11.jpg", "g12.jpg", "g13.jpg"],
+  "vestimenta": {
+    "tipo": "Etiqueta", "detalle": "Formal / etiqueta rigurosa",
+    "evitar": "Blanco, marfil y rojo, reservados para la novia",
+    "colores_titulo": "Colores reservados para damas de honor y pajecitas",
+    "colores": [ { "hex": "#E0218A", "nombre": "Rosa Barbie" }, { "hex": "#F2A9CF", "nombre": "Rosa pastel" } ]
+  },
+  "regalos": {
+    "tipo": "mesa",
+    "titulo": "Mesa de regalos",
+    "texto": "Tu presencia es el regalo más grande que podemos recibir. Si aun así deseas obsequiarnos algo para esta nueva etapa, puedes elegirlo en cualquiera de estas tiendas.",
+    "tiendas": "Amazon · Mercado Libre · Coppel · Walmart"
+  },
+  "hospedaje": [
+    { "nombre": "Hotel Corral Grande", "direccion": "5 min caminando de la parroquia", "telefono": "392 924 2180",
+      "mapa": "https://maps.google.com/?q=Hotel+Corral+Grande+Jamay+Jalisco" }
+  ],
+  "rsvp": {
+    "fecha_limite": "2026-07-10",
+    "whatsapp": "3921323212",
+    "contactos": [ { "nombre": "Ricardo Barba", "telefono": "3921323212" } ]
+  },
+  "fotos_invitados_link": "https://www.icloud.com/iclouddrive/09fg5b1t1v3Vwuziom4fLLu3A#Nuestra_Boda",
+  "hashtag": "#YaninAlejandraYRicardoParaSiempre"
+}
