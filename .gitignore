@@ -1,0 +1,4 @@
+clientes/*/fotos/
+*.tmp.html
+__pycache__/
+.DS_Store

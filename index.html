@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Alejandría · Invitaciones digitales</title>
+<meta name="description" content="Invitaciones digitales para XV años, bodas, bautizos y más. Página web con tu historia, fotos, mapa, cuenta regresiva y confirmación por WhatsApp. Jamay, Jalisco y todo México.">
+<meta property="og:title" content="Alejandría · Invitaciones que guardan historias">
+<meta property="og:description" content="Invitaciones digitales para XV años, bodas, bautizos y más. Lista en 72 horas.">
+<meta property="og:image" content="https://barbagomezricardo-cloud.github.io/alejandria/assets/og.jpg">
+<meta name="theme-color" content="#6B2338">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --vino:#6B2338; --vino-d:#521A2A; --oro:#9A7643; --oro-l:#D9B77E;
+    --perg:#F6EFE4; --perg-2:#EFE4D4; --rosa:#E7C6C3; --tinta:#2B1F22; --tinta-s:#5A4A4C;
+    --line:#E3D5C2; color-scheme:light;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',system-ui,sans-serif;background:var(--perg);color:var(--tinta);font-size:16px;line-height:1.6;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.1;text-wrap:balance}
+  h2{font-size:clamp(34px,5vw,50px);color:var(--vino);text-align:center;margin-bottom:12px}
+  .kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--oro);font-weight:600;text-align:center;margin-bottom:10px}
+  .lead{text-align:center;color:var(--tinta-s);max-width:600px;margin:0 auto 48px;font-size:17px}
+  section{padding-block:88px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:40px;padding:15px 30px;font-weight:600;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:transform .2s,background .2s,color .2s;cursor:pointer;border:0;font-family:inherit}
+  .btn.vino{background:var(--vino);color:#fff}
+  .btn.vino:hover{background:var(--vino-d);transform:translateY(-2px)}
+  .btn.line{border:1.5px solid var(--vino);color:var(--vino);background:transparent}
+  .btn.line:hover{background:var(--vino);color:#fff}
+
+  header.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--perg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:var(--perg)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+  .top img{height:44px;width:auto}
+  .top nav{display:flex;gap:26px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+  .top nav a{text-decoration:none;color:var(--tinta-s)}
+  .top nav a:hover{color:var(--vino)}
+  .top .btn{padding:10px 18px;font-size:12px}
+  @media(max-width:820px){.top nav{display:none}}
+
+  .hero{padding-block:64px 80px;position:relative;overflow:hidden}
+  .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(44px,7vw,78px);color:var(--vino);margin-bottom:18px}
+  .hero h1 em{color:var(--oro);font-style:italic}
+  .hero p{font-size:18px;color:var(--tinta-s);max-width:520px;margin-bottom:30px}
+  .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .trust{margin-top:28px;display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:var(--tinta-s)}
+  .hero .trust b{color:var(--vino);font-weight:600}
+  .phone{justify-self:center;width:min(300px,78vw);aspect-ratio:9/19;border-radius:42px;padding:10px;background:var(--tinta);box-shadow:0 40px 80px rgba(107,35,56,.28),inset 0 0 0 2px #4a3a3d;position:relative}
+  .phone::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:80px;height:20px;border-radius:12px;background:var(--tinta);z-index:2}
+  .phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:33px}
+  .arch{position:absolute;right:-120px;top:-60px;width:520px;height:620px;border:1.5px solid var(--oro-l);border-bottom:0;border-radius:260px 260px 0 0;opacity:.45;pointer-events:none}
+  @media(max-width:860px){.hero .grid{grid-template-columns:1fr;text-align:center}.hero p{margin-inline:auto}.hero .ctas,.hero .trust{justify-content:center}.arch{display:none}}
+
+  .events{background:var(--vino);color:#fff;padding-block:22px}
+  .events .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic}
+  .events span::before{content:"✦";font-style:normal;color:var(--oro-l);font-size:12px;margin-right:12px;vertical-align:middle}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:s}
+  .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 24px;counter-increment:s}
+  .step::before{content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--perg-2);color:var(--vino);font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin-bottom:16px}
+  .step h3{font-size:24px;color:var(--vino);margin-bottom:6px}
+  .step p{font-size:15px;color:var(--tinta-s)}
+  @media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  .plan{background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px 28px;display:flex;flex-direction:column;position:relative}
+  .plan.star{border:2px solid var(--vino);box-shadow:0 26px 60px rgba(107,35,56,.16)}
+  .plan .tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--vino);color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:20px;font-weight:600;white-space:nowrap}
+  .plan h3{font-size:32px;color:var(--vino)}
+  .plan .for{font-size:14px;color:var(--tinta-s);margin-bottom:18px}
+  .price{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--tinta);line-height:1}
+  .price small{font-family:'Jost',sans-serif;font-size:14px;color:var(--tinta-s);font-weight:400}
+  .plan ul{list-style:none;margin:22px 0 28px;display:grid;gap:9px;font-size:15px;flex:1}
+  .plan li{padding-left:24px;position:relative}
+  .plan li::before{content:"✦";position:absolute;left:0;top:1px;color:var(--oro);font-size:12px}
+  .plan li.no{color:#9b8f8c;text-decoration:line-through}
+  .plan li.no::before{content:"–";color:#b9adaa}
+  .plan .btn{width:100%}
+  @media(max-width:900px){.plans{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+  .note{text-align:center;font-size:14px;color:var(--tinta-s);margin-top:26px}
+
+  .extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;max-width:900px;margin:0 auto}
+  .extra{display:flex;justify-content:space-between;gap:12px;align-items:baseline;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px}
+  .extra b{color:var(--vino);white-space:nowrap;font-weight:600}
+
+  .demo{background:var(--perg-2)}
+  .demo .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+  .demo h2{text-align:left}
+  .demo .kicker{text-align:left}
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin:24px 0 30px;font-size:15px}
+  .feat div::before{content:"✦ ";color:var(--oro)}
+  @media(max-width:860px){.demo .grid{grid-template-columns:1fr}.demo h2,.demo .kicker{text-align:center}.demo .txt{text-align:center}.feat{text-align:left}}
+
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .why div{text-align:center;padding:10px}
+  .why .n{font-family:'Cormorant Garamond',serif;font-size:46px;color:var(--vino);font-weight:600;line-height:1}
+  .why p{color:var(--tinta-s);font-size:15px;margin-top:6px}
+  @media(max-width:700px){.why{grid-template-columns:1fr}}
+
+  .pay{background:#fff;border:1px solid var(--line);border-radius:22px;padding:36px clamp(20px,4vw,44px);max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .pay h3{font-size:26px;color:var(--vino);margin-bottom:6px}
+  .pay p{font-size:15px;color:var(--tinta-s)}
+  @media(max-width:640px){.pay{grid-template-columns:1fr}}
+
+  details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;max-width:760px;margin:0 auto 12px}
+  summary{cursor:pointer;font-weight:500;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  summary::after{content:"+";color:var(--vino);font-size:22px;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:10px;color:var(--tinta-s);font-size:15px}
+
+  .about{text-align:center}
+  .about .owners{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,40px);color:var(--vino);font-style:italic;margin:8px 0 14px}
+
+  .final{background:var(--vino);color:#fff;text-align:center}
+  .final h2{color:#fff}
+  .final p{color:#F3E3E0;max-width:560px;margin:0 auto 30px}
+  .final .btn.vino{background:#fff;color:var(--vino)}
+  .final .btn.line{border-color:#fff;color:#fff}
+  .final .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{background:var(--tinta);color:#d9cfc6;padding-block:44px calc(44px + env(safe-area-inset-bottom,0px));text-align:center;font-size:14px}
+  footer img{height:120px;margin:0 auto 18px}
+  footer .soc{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  footer a{color:var(--oro-l);text-decoration:none}
+
+  .wa-float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;width:58px;height:58px;border-radius:50%;background:#1FA855;display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.25)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--vino);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#inicio" aria-label="Alejandría, inicio"><img src="assets/logo-horizontal.svg" alt="Alejandría · Invitaciones que guardan historias"></a>
+    <nav aria-label="Principal">
+      <a href="#como">Cómo funciona</a><a href="#paquetes">Paquetes</a><a href="#ejemplo">Ejemplo</a><a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn vino js-pedido" href="#paquetes">Quiero la mía</a>
+  </div>
+</header>
+
+<main id="inicio">
+<section class="hero">
+  <div class="arch" aria-hidden="true"></div>
+  <div class="wrap grid">
+    <div>
+      <div class="kicker" style="text-align:inherit">Invitaciones digitales · Jamay, Jalisco</div>
+      <h1>Tu historia merece una invitación <em>inolvidable</em></h1>
+      <p>Creamos invitaciones web elegantes para XV años, bodas, bautizos y más: con tus fotos, tus colores, mapa, cuenta regresiva y confirmación por WhatsApp. Tú nos cuentas, nosotros la diseñamos.</p>
+      <div class="ctas">
+        <a class="btn vino js-pedido" href="#paquetes">Hacer mi pedido</a>
+        <a class="btn line" href="i/ejemplo-xv-shantell/" target="_blank" rel="noopener">Ver un ejemplo</a>
+      </div>
+      <div class="trust"><span><b>72 h</b> de entrega</span><span><b>Desde $590</b> MXN</span><span>Se comparte por <b>WhatsApp</b></span></div>
+    </div>
+    <a class="phone" href="i/ejemplo-xv-shantell/" target="_blank" rel="noopener" aria-label="Ver la invitación de ejemplo"><img src="assets/demo-xv.jpg" alt="Invitación digital de XV años vista en un celular"></a>
+  </div>
+</section>
+
+<div class="events"><div class="wrap"><span>XV Años</span><span>Bodas</span><span>Bautizos</span><span>Primera Comunión</span><span>Baby Shower</span><span>Cumpleaños</span></div></div>
+
+<section id="como">
+  <div class="wrap">
+    <div class="kicker">Así de fácil</div>
+    <h2>Cómo funciona</h2>
+    <p class="lead">Sin citas ni vueltas. Todo se hace desde tu celular.</p>
+    <div class="steps">
+      <div class="step"><h3>Elige tu paquete</h3><p>Escoge el que va con tu evento y tu presupuesto.</p></div>
+      <div class="step"><h3>Cuéntanos todo</h3><p>Llenas un formulario con fechas, lugares, tus colores favoritos y subes tus fotos.</p></div>
+      <div class="step"><h3>Revisa y aprueba</h3><p>En 72 horas te mandamos tu invitación para que la revises y pidas cambios.</p></div>
+      <div class="step"><h3>Compártela</h3><p>Recibes tu link, tu pre-invitación en PDF y la imagen para estados. ¡Listo para enviar!</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="paquetes" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">Precios claros</div>
+    <h2>Paquetes</h2>
+    <p class="lead">Todos incluyen tu link para compartir, pre-invitación en PDF, mapa, cuenta regresiva y confirmación por WhatsApp.</p>
+    <div class="plans">
+      <article class="plan">
+        <h3>Esencial</h3><div class="for">Para quien quiere algo bonito y rápido</div>
+        <div class="price">$590 <small>MXN</small></div>
+        <ul>
+          <li>Portada con tu foto principal</li><li>Cuenta regresiva</li><li>Itinerario y ubicación con mapa</li>
+          <li>Papás y padrinos</li><li>Código de vestimenta</li><li>Regalos o lluvia de sobres</li>
+          <li>Confirmación por WhatsApp</li><li>Pre-invitación PDF</li><li>1 ronda de cambios</li>
+          <li class="no">Galería de fotos</li><li class="no">Música</li>
+        </ul>
+        <a class="btn line js-pedido" data-paquete="Esencial" href="#">Elegir Esencial</a>
+      </article>
+      <article class="plan star">
+        <span class="tag">El más pedido</span>
+        <h3>Clásica</h3><div class="for">Todo lo esencial y tus fotos</div>
+        <div class="price">$990 <small>MXN</small></div>
+        <ul>
+          <li>Todo lo de Esencial</li><li>Galería de hasta 8 fotos</li><li>Un bloque de tu historia</li>
+          <li>Música de fondo</li><li>Hospedaje para invitados</li><li>Colores a tu gusto</li>
+          <li>Imagen para estados de WhatsApp</li><li>2 rondas de cambios</li>
+        </ul>
+        <a class="btn vino js-pedido" data-paquete="Clásica" href="#">Elegir Clásica</a>
+      </article>
+      <article class="plan">
+        <h3>Premium</h3><div class="for">La experiencia completa</div>
+        <div class="price">$1,590 <small>MXN</small></div>
+        <ul>
+          <li>Todo lo de Clásica</li><li>Galería de hasta 16 fotos</li><li>Historia completa en 3 capítulos</li>
+          <li>Foto destacada con frase</li><li>Álbum para que tus invitados suban fotos</li>
+          <li>Textos escritos para ti</li><li>Entrega prioritaria (48 h)</li><li>Cambios ilimitados hasta el evento</li>
+        </ul>
+        <a class="btn line js-pedido" data-paquete="Premium" href="#">Elegir Premium</a>
+      </article>
+    </div>
+    <p class="note">Precio de lanzamiento: <b>10% de descuento</b> a los primeros 10 clientes.</p>
+
+    <div style="margin-top:56px">
+      <div class="kicker">Hazla aún más tuya</div>
+      <h2 style="font-size:clamp(28px,4vw,38px)">Extras</h2>
+      <div class="extras" style="margin-top:26px">
+        <div class="extra"><span>Entrega exprés en 24 h</span><b>+$250</b></div>
+        <div class="extra"><span>Pase personalizado por familia</span><b>+$390</b></div>
+        <div class="extra"><span>Fotos extra (paquete de 5)</span><b>+$120</b></div>
+        <div class="extra"><span>Ronda de cambios adicional</span><b>+$100</b></div>
+        <div class="extra"><span>Diseño extra de pre-invitación</span><b>+$150</b></div>
+        <div class="extra"><span>Dominio propio (.com, 1 año)</span><b>+$450</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ejemplo" class="demo">
+  <div class="wrap grid">
+    <a class="phone" href="i/ejemplo-xv-shantell/" target="_blank" rel="noopener" aria-label="Abrir la invitación de ejemplo"><img src="assets/demo-xv.jpg" alt="Ejemplo de invitación de XV años de Shantell"></a>
+    <div class="txt">
+      <div class="kicker">Míralo en vivo</div>
+      <h2>Así se ve una invitación Alejandría</h2>
+      <p style="color:var(--tinta-s)">Ábrela en tu celular como la verían tus invitados: deslízate, escucha la música, abre el mapa y prueba la confirmación.</p>
+      <div class="feat">
+        <div>Tu historia con fotos</div><div>Cuenta regresiva en vivo</div><div>Mapa a un toque</div>
+        <div>Música de fondo</div><div>Galería elegante</div><div>Confirmación por WhatsApp</div>
+      </div>
+      <a class="btn vino" href="i/ejemplo-xv-shantell/" target="_blank" rel="noopener">Abrir ejemplo de XV años</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">¿Por qué digital?</div>
+    <h2>Más bonita, más práctica</h2>
+    <div class="why" style="margin-top:40px">
+      <div><div class="n">0</div><p>impresiones, sobres ni repartos casa por casa</p></div>
+      <div><div class="n">1 link</div><p>para mandar por WhatsApp a todos tus invitados</p></div>
+      <div><div class="n">24/7</div><p>tus invitados ven fecha, mapa y horario cuando quieran</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="pay">
+      <div><h3>Pagos</h3><p>Por transferencia bancaria. <b>50% de anticipo</b> para iniciar tu diseño y <b>50% al aprobarla</b>, antes de publicarla. Te enviamos los datos por WhatsApp.</p></div>
+      <div><h3>Fechas</h3><p>Hazlo con tiempo: lo ideal es enviar la invitación <b>6 a 8 semanas antes</b> del evento. ¿Tienes prisa? Pide la entrega exprés.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="preguntas" style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">Resolvemos tus dudas</div>
+    <h2>Preguntas frecuentes</h2>
+    <div style="margin-top:36px">
+      <details><summary>¿Cuánto tiempo tarda?</summary><p>72 horas después de recibir tu formulario completo y tu anticipo. Premium en 48 horas y exprés en 24 horas.</p></details>
+      <details><summary>¿Cómo la reciben mis invitados?</summary><p>Con un link que abren desde WhatsApp, Facebook o mensaje. No tienen que descargar nada. También te damos una pre-invitación en PDF y una imagen para tus estados.</p></details>
+      <details><summary>¿Puedo elegir los colores?</summary><p>¡Claro! En el formulario nos dices tus colores favoritos o los de tu evento y adaptamos toda la invitación a ellos.</p></details>
+      <details><summary>¿Qué fotos necesito?</summary><p>Una foto principal vertical de buena calidad y, según tu paquete, fotos para la galería. Pueden ser de tu sesión profesional o de tu celular.</p></details>
+      <details><summary>¿Y si cambia un dato después?</summary><p>Corregimos errores nuestros sin costo, siempre. Los cambios de información entran en tus rondas incluidas; después cuestan $100 cada uno.</p></details>
+      <details><summary>¿Trabajan fuera de Jamay?</summary><p>Sí. Somos de Jamay, Jalisco, pero todo se hace en línea, así que atendemos a cualquier parte de México.</p></details>
+      <details><summary>¿Cuánto tiempo estará en línea mi invitación?</summary><p>Al menos 6 meses después de tu evento, para que tus invitados la vuelvan a ver como recuerdo.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="about" style="padding-top:20px">
+  <div class="wrap">
+    <img src="assets/isotipo.svg" alt="" style="width:64px;margin:0 auto 12px">
+    <div class="kicker">Quiénes somos</div>
+    <div class="owners">Yanin Alejandra &amp; Ricardo</div>
+    <p class="lead" style="margin-bottom:0">Somos un matrimonio de Jamay. Hicimos nuestra propia invitación de boda y nos enamoramos del proceso. Alejandría nace de esa ilusión: que cada familia tenga una invitación tan especial como su historia.</p>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>¿Lista tu fecha? Empecemos</h2>
+    <p>Llena el formulario en 10 minutos y en 72 horas tendrás tu invitación.</p>
+    <div class="ctas">
+      <a class="btn vino js-pedido" href="#">Hacer mi pedido</a>
+      <a class="btn line js-wa" href="#">Pregúntanos por WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-vertical-claro.svg" alt="Alejandría">
+    <div>Jamay, Jalisco · Atendemos a todo México</div>
+    <div class="soc">
+      <a href="https://instagram.com/alejandria.invitaciones" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://facebook.com/alejandria.invitaciones" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://tiktok.com/@alejandria.invitaciones" target="_blank" rel="noopener">TikTok</a>
+      <a class="js-wa" href="#">WhatsApp</a>
+    </div>
+    <div>WhatsApp: <span style="user-select:all">392 132 3212</span></div>
+    <div style="margin-top:14px;font-size:12px;opacity:.7">© 2026 Alejandría · Invitaciones que guardan historias · <a href="privacidad.html">Aviso de privacidad</a></div>
+  </div>
+</footer>
+
+<a class="wa-float js-wa" href="#" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88M20.46 3.49A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42Z"/></svg></a>
+
+<script>
+  // ── Configuración: pega aquí el link de tu formulario de Tally cuando lo publiques ──
+  const FORM_URL = "";           // ej. "https://tally.so/r/abc123"
+  const WHATSAPP = "523921323212";
+
+  const wa = (t) => "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(t);
+  document.querySelectorAll(".js-wa").forEach(a => {
+    a.href = wa("¡Hola Alejandría! Me interesa una invitación digital. ¿Me dan informes?");
+    a.target = "_blank"; a.rel = "noopener";
+  });
+  document.querySelectorAll(".js-pedido").forEach(a => {
+    const paq = a.dataset.paquete;
+    if (!paq && a.getAttribute("href") === "#paquetes") return;   // botones que solo bajan a paquetes
+    if (FORM_URL) {
+      a.href = FORM_URL + (paq ? (FORM_URL.includes("?") ? "&" : "?") + "paquete=" + encodeURIComponent(paq) : "");
+    } else {
+      a.href = wa("¡Hola Alejandría! Quiero hacer mi pedido" + (paq ? " del paquete " + paq : "") + ". ¿Qué datos necesitan?");
+    }
+    a.target = "_blank"; a.rel = "noopener";
+  });
+</script>
+</body>
+</html>
