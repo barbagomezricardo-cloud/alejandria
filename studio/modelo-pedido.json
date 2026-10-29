@@ -3,7 +3,7 @@
   "paquete": "premium",
   "evento": "xv",
   "festejados": [
-    "Shantell"
+    "Valeria"
   ],
   "fecha": "2026-12-06T14:00",
   "ciudad": "Jamay, Jalisco",
@@ -19,27 +19,27 @@
     {
       "titulo": "Una niña que soñó en grande",
       "foto": "historia1.jpg",
-      "texto": "Desde pequeña, Shantell llenó cada rincón de su hogar con alegría y ternura. Con una sonrisa que ilumina cualquier lugar y un corazón generoso, creció rodeada del amor de su familia, construyendo sueños con dedicación y gracia."
+      "texto": "Desde pequeña, Valeria llenó cada rincón de su hogar con alegría y ternura. Con una sonrisa que ilumina cualquier lugar y un corazón generoso, creció rodeada del amor de su familia, construyendo sueños con dedicación y gracia."
     },
     {
       "titulo": "Quince años de pura luz",
       "foto": "historia2.jpg",
-      "texto": "Este día no es solo una fiesta: es la celebración de quince años de vida. Shantell llega a esta etapa con la elegancia y la madurez de quien sabe hacia dónde quiere ir, sin perder nunca la chispa que la hace única."
+      "texto": "Este día no es solo una fiesta: es la celebración de quince años de vida. Valeria llega a esta etapa con la elegancia y la madurez de quien sabe hacia dónde quiere ir, sin perder nunca la chispa que la hace única."
     },
     {
       "titulo": "El próximo capítulo",
       "foto": "historia3.jpg",
-      "texto": "Llegar a los quince es pararse en el umbral de algo nuevo y mirarlo con valentía. Shantell lo hace rodeada de quienes más la quieren, lista para escribir los capítulos más emocionantes de su historia."
+      "texto": "Llegar a los quince es pararse en el umbral de algo nuevo y mirarlo con valentía. Valeria lo hace rodeada de quienes más la quieren, lista para escribir los capítulos más emocionantes de su historia."
     }
   ],
   "frase_destacada": "Un día que guardaremos en el corazón para siempre.",
   "familia": [
     {
-      "nombre": "Anahy López Rodríguez",
+      "nombre": "María López Ruiz",
       "rol": "Mamá"
     },
     {
-      "nombre": "Rogelio Octavio Galeno Rodríguez",
+      "nombre": "José Pérez Hernández",
       "rol": "Papá"
     }
   ],
@@ -91,7 +91,7 @@
   },
   "regalos": {
     "tipo": "sobres",
-    "texto": "Tu presencia es el regalo más grande que Shantell puede recibir. En lugar de regalos, habrá lluvia de sobres el día del evento."
+    "texto": "Tu presencia es el regalo más grande que Valeria puede recibir. En lugar de regalos, habrá lluvia de sobres el día del evento."
   },
   "hospedaje": [
     {
@@ -107,11 +107,11 @@
   ],
   "rsvp": {
     "fecha_limite": "2026-11-25",
-    "whatsapp": "3921281381",
+    "whatsapp": "3920000000",
     "contactos": []
   },
-  "fotos_invitados_link": "https://wa.me/523921281381",
+  "fotos_invitados_link": "https://wa.me/523920000000",
   "musica": "musica.mp3",
-  "hashtag": "#ShantellXV · #MisQuince2026",
+  "hashtag": "#ValeriaXV",
   "_nota": "Pedido modelo para copiar. Las fotos van en clientes/<slug>/fotos/. No publicar."
 }

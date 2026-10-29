@@ -11,8 +11,7 @@ A = ROOT / "assets"
 OUT = ROOT / "marketing"
 logo_claro = (A / "logo-vertical-claro.svg").read_text()
 logo = (A / "logo-vertical.svg").read_text()
-foto_xv = A / "foto-xv.jpg"
-demo = A / "demo-xv.jpg"
+demo = A / "demo-boda.jpg"
 
 CSS = f"""
 @font-face{{font-family:CG;src:url(file://{F}/Cormorant-SemiBold.ttf)}}
@@ -34,16 +33,6 @@ def foot(pill, pill_style, lg):
 <div class=pill style="{pill_style}">{pill}</div><div class=logo style="width:240px">{lg}</div></div>"""
 
 ADS = {}
-ADS["xv-anos-post"] = (1350, f"""<div style="position:relative;height:1350px;background:#2B1F22">
-<img src="file://{foto_xv}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:54% 8%">
-<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,10,0) 32%,rgba(43,15,24,.94) 80%)"></div>
-<div style="position:absolute;left:80px;right:80px;bottom:90px;color:#fff;text-align:center">
-<div class=k style="color:#E7C6C3">Invitaciones de XV años</div>
-<h1 style="font-size:104px;margin:22px 0 18px">Sus quince años,<br><em style="color:#D9B77E">contados con amor</em></h1>
-<div style="font-size:32px;opacity:.92">Fotos, música, mapa y confirmación por WhatsApp.<br>Lista en 72 horas · Desde $590</div>
-<div style="display:flex;justify-content:space-between;align-items:center;margin-top:44px">
-<div class=logo style="width:230px">{logo_claro}</div>
-<div class=pill style="background:#fff;color:#6B2338">Pide la tuya</div></div></div></div>""")
 
 ADS["bodas-post"] = (1350, f"""<div style="position:relative;height:1350px;background:#F6EFE4;text-align:center;padding:120px 90px">
 <div class=arch style="left:170px;right:170px;top:90px;height:840px"></div>
