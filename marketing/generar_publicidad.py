@@ -11,7 +11,7 @@ A = ROOT / "assets"
 OUT = ROOT / "marketing"
 logo_claro = (A / "logo-vertical-claro.svg").read_text()
 logo = (A / "logo-vertical.svg").read_text()
-foto_xv = ROOT / "i/ejemplo-xv-shantell/img/portada.jpg"
+foto_xv = A / "foto-xv.jpg"
 demo = A / "demo-xv.jpg"
 
 CSS = f"""
@@ -99,9 +99,9 @@ ADS["ejemplo-historia"] = (1920, f"""<div style="position:relative;height:1920px
 <div class=pill style="background:#fff;color:#6B2338;margin-top:-60px;position:relative">Ver ejemplo · link en perfil</div></div>""")
 
 
-foto_boda = ROOT / "i/ejemplo-boda-yanin-ricardo/img/historia2.jpg"
+foto_boda = ROOT / "i/ejemplo-boda-yanin-ricardo/images/r-story1.jpeg"
 ADS["bodas-foto-post"] = (1350, f"""<div style="position:relative;height:1350px;background:#2B1F22">
-<img src="file://{foto_boda}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%">
+<img src="file://{foto_boda}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%">
 <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,10,.05) 30%,rgba(43,15,24,.94) 78%)"></div>
 <div style="position:absolute;left:80px;right:80px;bottom:90px;color:#fff;text-align:center">
 <div class=k style="color:#E7C6C3">Invitaciones de boda</div>

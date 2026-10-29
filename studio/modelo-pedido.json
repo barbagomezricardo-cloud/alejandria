@@ -1,0 +1,117 @@
+{
+  "slug": "modelo-xv",
+  "paquete": "premium",
+  "evento": "xv",
+  "festejados": [
+    "Shantell"
+  ],
+  "fecha": "2026-12-06T14:00",
+  "ciudad": "Jamay, Jalisco",
+  "colores": {
+    "paleta": "rosa-olivo"
+  },
+  "fotos": {
+    "portada": "portada.jpg",
+    "cierre": "cierre.jpg",
+    "destacada": "historia2.jpg"
+  },
+  "historia": [
+    {
+      "titulo": "Una niña que soñó en grande",
+      "foto": "historia1.jpg",
+      "texto": "Desde pequeña, Shantell llenó cada rincón de su hogar con alegría y ternura. Con una sonrisa que ilumina cualquier lugar y un corazón generoso, creció rodeada del amor de su familia, construyendo sueños con dedicación y gracia."
+    },
+    {
+      "titulo": "Quince años de pura luz",
+      "foto": "historia2.jpg",
+      "texto": "Este día no es solo una fiesta: es la celebración de quince años de vida. Shantell llega a esta etapa con la elegancia y la madurez de quien sabe hacia dónde quiere ir, sin perder nunca la chispa que la hace única."
+    },
+    {
+      "titulo": "El próximo capítulo",
+      "foto": "historia3.jpg",
+      "texto": "Llegar a los quince es pararse en el umbral de algo nuevo y mirarlo con valentía. Shantell lo hace rodeada de quienes más la quieren, lista para escribir los capítulos más emocionantes de su historia."
+    }
+  ],
+  "frase_destacada": "Un día que guardaremos en el corazón para siempre.",
+  "familia": [
+    {
+      "nombre": "Anahy López Rodríguez",
+      "rol": "Mamá"
+    },
+    {
+      "nombre": "Rogelio Octavio Galeno Rodríguez",
+      "rol": "Papá"
+    }
+  ],
+  "textos": {
+    "familia_titulo": "Sus papás"
+  },
+  "itinerario": [
+    {
+      "hora": "2:00 PM",
+      "actividad": "Recepción de invitados"
+    },
+    {
+      "hora": "3:30 PM",
+      "actividad": "Servicio de comida"
+    },
+    {
+      "hora": "5:00 PM",
+      "actividad": "Sesión de fotos"
+    },
+    {
+      "hora": "6:00 PM",
+      "actividad": "Brindis y palabras especiales"
+    },
+    {
+      "hora": "7:00 PM",
+      "actividad": "¡Fiesta y baile!"
+    }
+  ],
+  "lugares": [
+    {
+      "etiqueta": "Recepción y fiesta",
+      "nombre": "Restaurante La Charaliza",
+      "direccion": "Jamay, Jalisco",
+      "mapa": "https://maps.app.goo.gl/5oNWwzq2THb5NENeA"
+    }
+  ],
+  "galeria": [
+    "g1.jpg",
+    "g2.jpg",
+    "g3.jpg",
+    "g4.jpg",
+    "g5.jpg",
+    "g6.jpg"
+  ],
+  "vestimenta": {
+    "tipo": "Formal",
+    "detalle": "Vestido de gala o traje",
+    "evitar": "Rosa y blanco, reservados para la quinceañera"
+  },
+  "regalos": {
+    "tipo": "sobres",
+    "texto": "Tu presencia es el regalo más grande que Shantell puede recibir. En lugar de regalos, habrá lluvia de sobres el día del evento."
+  },
+  "hospedaje": [
+    {
+      "nombre": "Hotel Corral Grande",
+      "direccion": "Ramón Corona #86, Centro",
+      "telefono": "392 924 2180"
+    },
+    {
+      "nombre": "Hotel Real del Lago",
+      "direccion": "Francisco I. Madero #65, Centro",
+      "telefono": "392 688 2993"
+    }
+  ],
+  "rsvp": {
+    "fecha_limite": "2026-11-25",
+    "whatsapp": "3921281381",
+    "contactos": []
+  },
+  "fotos_invitados_link": "https://wa.me/523921281381",
+  "musica": "musica.mp3",
+  "hashtag": "#ShantellXV · #MisQuince2026",
+  "_nota": "Pedido modelo para copiar. Las fotos van en clientes/<slug>/fotos/. No publicar."
+}

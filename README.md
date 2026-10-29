@@ -30,7 +30,7 @@ python3 studio/generar.py clientes/<cliente>/pedido.json
 git add i/<cliente> clientes/<cliente>/pedido.json && git commit -m "Invitación <cliente>" && git push
 ```
 
-Ver `clientes/ejemplo-xv-shantell/pedido.json` como modelo y `studio/FORMULARIO.md` para las preguntas del formulario.
+Ver `studio/modelo-pedido.json` como modelo y `studio/FORMULARIO.md` para las preguntas del formulario.
 
 ## Paquetes
 
