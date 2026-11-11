@@ -32,7 +32,7 @@ git add i/<cliente> clientes/<cliente>/pedido.json && git commit -m "Invitación
 
 Ver `studio/modelo-pedido.json` como modelo y `studio/FORMULARIO.md` para las preguntas del formulario.
 
-## Tarjetas de mesa con QR (+$290)
+## Tarjetas de mesa con QR (+$290; con foto +$350 usando `--foto <archivo>`)
 
 ```bash
 python3 studio/tarjeta_qr.py --slug <cliente> --nombres "Ana &amp; Luis" --link "<link del álbum>" \
