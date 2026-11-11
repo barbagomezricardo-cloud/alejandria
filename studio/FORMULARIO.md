@@ -18,7 +18,7 @@ La columna "Campo" indica dónde cae cada respuesta en `clientes/<slug>/pedido.j
 |---|---|---|---|---|
 | 1 | ¿Qué paquete quieres? | Opción única (obligatoria) | Esencial $590 · Clásica $990 · Premium $1,590 | `paquete` |
 | 2 | ¿Qué celebras? | Opción única (obligatoria) | XV años · Boda · Bautizo · Primera Comunión · Baby Shower · Cumpleaños · Otro | `evento` |
-| 3 | Extras (opcional) | Casillas | Entrega exprés 24 h (+$250) · Pase personalizado por familia (+$390) · 5 fotos extra (+$120) · Diseño extra de pre-invitación (+$150) · Dominio propio (+$450) | (para la cotización) |
+| 3 | Extras (opcional) | Casillas | Entrega exprés 24 h (+$250) · Pase personalizado por familia (+$390) · 5 fotos extra (+$120) · Diseño extra de pre-invitación (+$150) · Dominio propio (+$450) · Tarjetas de mesa con QR para fotos (+$290) | (para la cotización) |
 
 ## Página 2 · Tus datos de contacto (no se publican)
 

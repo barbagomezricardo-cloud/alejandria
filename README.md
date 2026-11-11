@@ -32,6 +32,14 @@ git add i/<cliente> clientes/<cliente>/pedido.json && git commit -m "Invitación
 
 Ver `studio/modelo-pedido.json` como modelo y `studio/FORMULARIO.md` para las preguntas del formulario.
 
+## Tarjetas de mesa con QR (+$290)
+
+```bash
+python3 studio/tarjeta_qr.py --slug <cliente> --nombres "Ana &amp; Luis" --link "<link del álbum>" \
+  --fecha "12 de diciembre, 2026" --principal "#6B6B3A" --secundario "#A0754B" --hashtag "#AnaYLuis" --evento "nuestra boda"
+```
+Sale en `i/<cliente>/tarjetas/`: `tarjeta-4x6.pdf` (imprenta), `tarjetas-carta.pdf` (2 por hoja) y `tarjeta.png`.
+
 ## Paquetes
 
 | Paquete | Precio | Historia | Galería | Extras |
