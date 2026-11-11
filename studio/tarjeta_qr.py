@@ -95,11 +95,75 @@ def garland(P, S):
     return f'<svg class="garland" viewBox="0 0 384 576" width="384" height="576">{"".join(out)}</svg>'
 
 def qr_svg(link, color):
-    q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_Q, border=0, box_size=10)
+    """QR de puntos con ojos cuadrados redondeados."""
+    q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H, border=0)
     q.add_data(link); q.make(fit=True)
     m = q.get_matrix(); n = len(m)
-    rects = "".join(f'<rect x="{x}" y="{y}" width="1.04" height="1.04"/>' for y, row in enumerate(m) for x, v in enumerate(row) if v)
-    return f'<svg viewBox="0 0 {n} {n}" shape-rendering="crispEdges" style="width:100%;height:100%;display:block"><g fill="{color}">{rects}</g></svg>'
+    def in_eye(x, y): return (x < 7 and y < 7) or (x >= n - 7 and y < 7) or (x < 7 and y >= n - 7)
+    dots = "".join(f'<rect x="{x+.06}" y="{y+.06}" width=".88" height=".88" rx=".42"/>' for y, row in enumerate(m) for x, v in enumerate(row) if v and not in_eye(x, y))
+    eyes = "".join(f'<rect x="{ex+.5}" y="{ey+.5}" width="6" height="6" rx="1.4" fill="none" stroke="{color}" stroke-width="1"/>'
+                   f'<rect x="{ex+2}" y="{ey+2}" width="3" height="3" rx=".7"/>' for ex, ey in ((0, 0), (n - 7, 0), (0, n - 7)))
+    return f'<svg viewBox="0 0 {n} {n}" style="width:100%;height:100%;display:block"><g fill="{color}">{dots}{eyes}</g></svg>'
+
+def leaf(x, y, rot, L, col, vein="#fff", w=.42):
+    W = L * w
+    return (f'<g transform="translate({x:.1f},{y:.1f}) rotate({rot:.0f})"><path d="M0,0 C{W:.1f},{-L*.2:.1f} {W:.1f},{-L*.75:.1f} 0,{-L:.1f} C{-W:.1f},{-L*.75:.1f} {-W:.1f},{-L*.2:.1f} 0,0Z" fill="{col}"/>'
+            f'<path d="M0,-1 Q{W*.15:.1f},{-L*.5:.1f} 0,{-L*.9:.1f}" stroke="{vein}" stroke-width=".5" fill="none" opacity=".45"/></g>')
+
+def spray(x, y, ang, length, P, seed, n=7, size=17):
+    """Rama con hojas ovaladas alternas (tipo eucalipto/olivo)."""
+    import random
+    rnd = random.Random(seed)
+    tones = [P, light(P, .25), light(P, .45), dark(P, .12)]
+    out = []
+    ex, ey = x + length * math.cos(math.radians(ang)), y + length * math.sin(math.radians(ang))
+    bend = rnd.uniform(-.18, .18) * length
+    cx, cy = (x + ex) / 2 - bend * math.sin(math.radians(ang)), (y + ey) / 2 + bend * math.cos(math.radians(ang))
+    out.append(f'<path d="M{x:.1f},{y:.1f} Q{cx:.1f},{cy:.1f} {ex:.1f},{ey:.1f}" stroke="{dark(P,.2)}" stroke-width=".9" fill="none"/>')
+    for i in range(n):
+        t = .18 + .8 * i / max(1, n - 1)
+        px = (1-t)**2*x + 2*(1-t)*t*cx + t*t*ex; py = (1-t)**2*y + 2*(1-t)*t*cy + t*t*ey
+        side = 1 if i % 2 else -1
+        L = size * (1.05 - .35 * t) * rnd.uniform(.9, 1.1)
+        out.append(leaf(px, py, ang + 90 + side * rnd.uniform(38, 55), L, rnd.choice(tones)))
+    out.append(leaf(ex, ey, ang + 90, size * .7, tones[0]))
+    return "".join(out)
+
+def rose(x, y, r, wood):
+    petal, shade, edge = "#FBF7EE", "#EFE6D3", light(wood, .55)
+    out = [f'<g transform="translate({x:.1f},{y:.1f})">']
+    for k, (rr, n, off) in enumerate(((r, 7, 0), (r*.78, 6, 25), (r*.56, 5, 10))):
+        for i in range(n):
+            a = i * 360 / n + off
+            out.append(f'<ellipse cx="0" cy="{-rr*.48:.1f}" rx="{rr*.52:.1f}" ry="{rr*.55:.1f}" transform="rotate({a:.0f})" fill="{petal if k%2==0 else shade}" stroke="{edge}" stroke-width=".5"/>')
+    out.append(f'<circle r="{r*.3:.1f}" fill="{shade}" stroke="{edge}" stroke-width=".5"/>')
+    out.append(f'<path d="M{-r*.12:.1f},0 a{r*.14:.1f},{r*.14:.1f} 0 1,1 {r*.2:.1f},{r*.05:.1f} a{r*.2:.1f},{r*.2:.1f} 0 1,1 {-r*.32:.1f},{-r*.12:.1f}" fill="none" stroke="{edge}" stroke-width=".7"/>')
+    out.append('</g>')
+    return "".join(out)
+
+def babys_breath(x, y, ang, length, P, seed):
+    import random
+    rnd = random.Random(seed)
+    out = []
+    for k in range(5):
+        a = ang + rnd.uniform(-35, 35); L = length * rnd.uniform(.5, 1)
+        ex, ey = x + L * math.cos(math.radians(a)), y + L * math.sin(math.radians(a))
+        out.append(f'<path d="M{x:.1f},{y:.1f} L{ex:.1f},{ey:.1f}" stroke="{light(P,.3)}" stroke-width=".5"/>')
+        for j in range(4):
+            fx, fy = ex + rnd.uniform(-6, 6), ey + rnd.uniform(-6, 6)
+            out.append(f'<circle cx="{fx:.1f}" cy="{fy:.1f}" r="{rnd.uniform(1.6,2.4):.1f}" fill="#FFFDF7" stroke="#E4DCC8" stroke-width=".4"/><circle cx="{fx:.1f}" cy="{fy:.1f}" r=".6" fill="#E9DDB8"/>')
+    return "".join(out)
+
+def florals(P, S):
+    tr = (spray(390, 6, 165, 150, P, 1, 10, 26) + spray(392, 52, 200, 120, P, 2, 8, 24) + spray(372, -6, 118, 120, P, 3, 8, 22)
+          + spray(392, 120, 245, 95, P, 13, 7, 22) + spray(330, 0, 150, 70, P, 14, 5, 18)
+          + babys_breath(318, 36, 200, 40, P, 4) + babys_breath(368, 96, 120, 32, P, 5)
+          + rose(352, 34, 22, S) + rose(318, 12, 13, S))
+    bl = (spray(-6, 400, -80, 160, P, 6, 11, 28) + spray(-6, 470, -55, 105, P, 7, 8, 25) + spray(4, 590, -55, 115, P, 8, 8, 23)
+          + spray(-6, 540, -65, 130, P, 9, 8, 25) + spray(40, 600, -85, 70, P, 15, 5, 19) + spray(-6, 330, -100, 90, P, 16, 6, 20)
+          + babys_breath(40, 430, -60, 42, P, 10) + babys_breath(66, 492, -50, 30, P, 11) + babys_breath(18, 360, -80, 30, P, 12)
+          + rose(30, 524, 32, S) + rose(74, 562, 20, S) + rose(16, 455, 20, S))
+    return f'<svg class="florals" viewBox="0 0 384 576" width="384" height="576">{tr}{bl}</svg>'
 
 def foto_html(a):
     if not a.foto: return ""
@@ -119,56 +183,52 @@ def foto_html(a):
     pos = pos or "50% 30%"
     return f'<div class="foto"><img src="data:image/jpeg;base64,{base64.b64encode(b.getvalue()).decode()}" style="object-position:{pos}"></div>'
 
+HEART = '<svg viewBox="0 0 24 22" width="11" height="10"><path d="M12 20 C5 14 1 10.5 1 6.5 A5 5 0 0 1 12 4.5 A5 5 0 0 1 23 6.5 C23 10.5 19 14 12 20Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
+
 def card_html(a):
     P, S = a.principal, a.secundario
-    c = dict(P=P, S=S, olive_d=dark(P, .3), wood_d=dark(S, .3), wood_l=light(S, .55), paper="#F7F2E8")
-    lead = "Escanea y comparte tus fotos y videos" if a.foto else f"Escanea el código y comparte con nosotros<br>tus fotos y videos de {a.evento}"
+    c = dict(P=P, S=S, olive_d=dark(P, .38), wood_d=dark(S, .25), paper="#F8F4EA")
+    div = f'<div class="div"><span></span>{HEART}<span></span></div>'
+    names = f'<div class="names">{a.nombres}</div>' if a.nombres else ''
     return f"""
 <div class="card{" cf" if a.foto else ""}">
-  <div class="arch"></div><div class="arch in"></div>
-  {garland(P, S)}
+  <div class="frame"></div><div class="frame in"></div>
+  {florals(P, S)}
   <div class="content">
-    <div class="eyebrow">{a.titulo}</div>
+    {div}
+    <h1>Comparte<br><span>tus fotos</span></h1>
     {foto_html(a)}
-    <div class="names">{a.nombres}</div>
-    <p class="lead">{lead}</p>
-    <div class="qrwrap"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><div class="qr">{qr_svg(a.link, c['olive_d'])}</div></div>
-    <div class="steps">Abre tu cámara <span>·</span> Escanea <span>·</span> Sube tus fotos</div>
+    <p class="lead">Tus recuerdos también son parte<br>de nuestra historia. {HEART}</p>
+    <div class="qrwrap"><div class="qr">{qr_svg(a.link, c['olive_d'])}</div></div>
+    <div class="cta">Escanea el QR y<br>comparte tus fotos</div>
+    {div}
+    {names}<div class="date">{a.fecha}</div>
   </div>
-  <div class="band"><div>{a.fecha}</div>{f'<div class="tag">{a.hashtag}</div>' if a.hashtag else ''}</div>
 </div>""", c
 
 def css(c):
     return f"""
-@font-face{{font-family:CG;src:url(file://{FONTS}/Cormorant-SemiBold.ttf)}}
-@font-face{{font-family:CGI;src:url(file://{FONTS}/Cormorant-SemiBoldItalic.ttf)}}
-@font-face{{font-family:CI;src:url(file://{FONTS}/Cormorant-Italic.ttf)}}
-@font-face{{font-family:J;src:url(file://{FONTS}/Jost-Medium.ttf)}}
-@font-face{{font-family:JR;src:url(file://{FONTS}/Jost-Regular.ttf)}}
+@font-face{{font-family:GV;src:url(file://{FONTS}/GreatVibes.ttf)}}
+@font-face{{font-family:CG;src:url(file://{FONTS}/Cormorant-Medium.ttf)}}
+@font-face{{font-family:CGS;src:url(file://{FONTS}/Cormorant-SemiBold.ttf)}}
 *{{margin:0;padding:0;box-sizing:border-box}}
-.card{{width:4in;height:6in;position:relative;overflow:hidden;font-family:JR;color:{c['olive_d']};
-  background:radial-gradient(120% 80% at 50% 30%,#FBF8F1 0%,{c['paper']} 60%,#EFE7D8 100%)}}
-.arch{{position:absolute;left:.26in;right:.26in;top:.3in;bottom:.62in;border:1.2px solid {c['S']};border-radius:1.74in 1.74in 0 0;border-bottom:0}}
-.arch.in{{left:.33in;right:.33in;top:.37in;bottom:.62in;border:.6px solid {c['P']};opacity:.55;border-radius:1.67in 1.67in 0 0;border-bottom:0}}
-.crest{{position:absolute;top:.2in;left:0;right:0;display:flex;justify-content:center;gap:0}}
-.crest svg:first-child{{margin-right:-.04in}} .crest svg:last-child{{margin-left:-.04in}}
-.garland{{position:absolute;inset:0;width:4in;height:6in}}
-.content{{position:absolute;left:.42in;right:.42in;top:.92in;bottom:.72in;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center}}
-.eyebrow{{font-family:J;font-size:7.6pt;letter-spacing:3.6pt;text-transform:uppercase;color:{c['wood_d']}}}
-.names{{font-family:CGI;font-size:36pt;line-height:1;margin-top:2pt;color:{c['P']};text-wrap:balance}}
-.lead{{font-family:CI;font-size:12pt;line-height:1.3;color:{c['olive_d']}}}
-.qrwrap{{position:relative;padding:.1in;background:#fff;border-radius:3px;box-shadow:0 1px 6px rgba(80,60,30,.12)}}
-.qr{{width:1.75in;height:1.75in}}
-.c{{position:absolute;width:12px;height:12px;border:0 solid {c['S']}}}
-.c.tl{{top:-5px;left:-5px;border-top-width:1.5px;border-left-width:1.5px}} .c.tr{{top:-5px;right:-5px;border-top-width:1.5px;border-right-width:1.5px}}
-.c.bl{{bottom:-5px;left:-5px;border-bottom-width:1.5px;border-left-width:1.5px}} .c.br{{bottom:-5px;right:-5px;border-bottom-width:1.5px;border-right-width:1.5px}}
-.steps{{white-space:nowrap;font-family:J;font-size:6.4pt;letter-spacing:1.1pt;text-transform:uppercase;color:{c['olive_d']}}} .steps span{{color:{c['S']};margin:0 3px}}
-.band{{position:absolute;left:0;right:0;bottom:0;height:.62in;background:{c['S']};color:#FBF6EC;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
-  background-image:linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.08))}}
-.band div{{font-family:J;font-size:7.6pt;letter-spacing:3pt;text-transform:uppercase}} .band .tag{{font-family:CI;font-size:11pt;letter-spacing:.5pt;text-transform:none;opacity:.92}}
-.foto{{flex:none;width:1.02in;height:1.22in;border-radius:.51in .51in 2px 2px;overflow:hidden;box-shadow:0 0 0 1.2px {c['S']},0 0 0 4px {c['paper']},0 0 0 4.6px {c['P']}}}
+.card{{width:4in;height:6in;position:relative;overflow:hidden;color:{c['olive_d']};background:radial-gradient(110% 80% at 50% 40%,#FCFAF4 0%,{c['paper']} 65%,#F0E9DA 100%)}}
+.frame{{position:absolute;inset:.17in;border:1.1px solid {c['S']}}}
+.frame.in{{inset:.22in;border:.5px solid {c['S']};opacity:.7}}
+.florals{{position:absolute;inset:0;width:4in;height:6in;z-index:2;pointer-events:none}}
+.content{{position:absolute;inset:.34in .4in .3in .55in;display:flex;flex-direction:column;align-items:center;text-align:center;z-index:1}}
+.div{{display:flex;align-items:center;gap:7px;color:{c['S']}}} .div span{{width:.75in;height:.8px;background:{c['S']}}}
+h1{{font-family:GV;font-weight:400;font-size:48pt;line-height:.82;margin-top:8pt;color:{c['olive_d']}}} h1 span{{display:inline-block;margin-left:.35in}}
+.lead{{font-family:CG;font-size:11.5pt;line-height:1.3;margin-top:9pt;color:{c['olive_d']}}} .lead svg{{color:{c['S']};vertical-align:-1px}}
+.qrwrap{{margin-top:11pt;padding:.1in;background:#fff;border:1.4px solid {c['S']};border-radius:12px}}
+.qr{{width:1.62in;height:1.62in}}
+.cta{{margin-top:10pt;font-family:CGS;font-size:10.5pt;letter-spacing:2.6pt;text-transform:uppercase;line-height:1.35;color:{c['olive_d']}}}
+.content>.div:nth-last-of-type(1){{margin-top:9pt}}
+.names{{font-family:GV;font-size:20pt;line-height:1;margin-top:5pt;color:{c['P']}}}
+.date{{font-family:CGS;font-size:7pt;letter-spacing:2.4pt;text-transform:uppercase;color:{c['wood_d']};margin-top:2pt}}
+.foto{{width:1in;height:1.15in;border-radius:.5in .5in 3px 3px;overflow:hidden;margin-top:6pt;box-shadow:0 0 0 1.2px {c['S']},0 0 0 4px {c['paper']},0 0 0 4.6px {c['S']}}}
 .foto img{{width:100%;height:100%;object-fit:cover;display:block}}
-.card.cf .names{{font-size:28pt}} .card.cf .lead{{font-size:10.5pt}} .card.cf .qr{{width:1.4in;height:1.4in}}
+.card.cf h1{{font-size:40pt}} .card.cf .lead{{font-size:10pt;margin-top:6pt}} .card.cf .qr{{width:1.3in;height:1.3in}} .card.cf .qrwrap{{margin-top:7pt}} .card.cf .cta{{margin-top:7pt;font-size:9pt}}
 """
 
 def main():
