@@ -228,7 +228,7 @@ h1{{font-family:GV;font-weight:400;font-size:48pt;line-height:.82;margin-top:8pt
 .date{{font-family:CGS;font-size:7pt;letter-spacing:2.4pt;text-transform:uppercase;color:{c['wood_d']};margin-top:2pt}}
 .foto{{width:1in;height:1.15in;border-radius:.5in .5in 3px 3px;overflow:hidden;margin-top:6pt;box-shadow:0 0 0 1.2px {c['S']},0 0 0 4px {c['paper']},0 0 0 4.6px {c['S']}}}
 .foto img{{width:100%;height:100%;object-fit:cover;display:block}}
-.card.cf h1{{font-size:40pt}} .card.cf .lead{{font-size:10pt;margin-top:6pt}} .card.cf .qr{{width:1.3in;height:1.3in}} .card.cf .qrwrap{{margin-top:7pt}} .card.cf .cta{{margin-top:7pt;font-size:9pt}}
+.card.cf h1{{font-size:40pt}} .card.cf .names{{font-size:17pt}} .card.cf .lead{{font-size:10pt;margin-top:6pt}} .card.cf .qr{{width:1.3in;height:1.3in}} .card.cf .qrwrap{{margin-top:7pt}} .card.cf .cta{{margin-top:7pt;font-size:9pt}}
 """
 
 def main():
